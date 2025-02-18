@@ -7,66 +7,34 @@ Digital VLSI SoC design and planning with a complete RTL to GDSII flow.The imple
 <br/>
 
 # Table of Contents
-1. **Day-1**- Inception of open-source EDA, OpenLANE and Sky130 PDK
-          *  How to talk to computers
-          *  SoC design and OpenLANE
-          *  Get familiar to open-source EDA tools
+ 
 
-   
-
-3. **Day-2** - Good floorplan vs bad floorplan and introduction to library cells
-          *  Chip Floor planning considerations
-          *  Library Binding and Placement
-          *  Cell design and characterization flows
-          *  General timing characterization parameters
-
-4. **Day-3** - Design library cell using Magic Layout and ngspice characterization
-          *  Labs for CMOS inverter ngspice simulations
-          *  Inception of Layout CMOS fabrication process
-          *  Sky130 Tech File Labs
-
-   
-
-6. **Day-4**- Pre-layout timing analysis and importance of good clock tree
-          *  Timing modelling using delay tables
-          *  Timing analysis with ideal clocks using openSTA
-          *  Clock tree synthesis TritonCTS and signal integrity
-          *  Timing analysis with real clocks using openSTA
-
-   
-
-8. **Day-5**- Final steps for RTL2GDS using tritonRoute and openSTA
-
-          *  Routing and design rule check (DRC)
-          *  Power Distribution Network and routing
-          *  TritonRoute Features
-<br/>   
-
-1. **Day-1**
-    * IC Design Components and Terminologies
-    * RISC-V
-    * Physical Design Flow and Open source EDA tools
+1. **Day-1**-Inception of open-source EDA, OpenLANE and Sky130 PDK
+    * How to talk to computers
+    * SoC design and OpenLANE
+    * Get familiar to open-source EDA tools
     * Lab Exercises 
-2. **Day-2**
-    * Floorplan
-    * Placement
-    * Cell Design Flow
+2. **Day-2**- Good floorplan vs bad floorplan and introduction to library cells
+    * Chip Floor planning considerations
+    * Library Binding and Placement
+    * Cell design and characterization flows
+    * General timing characterization parameters
     * Lab Exercises 
-3. **Day-3**
-    * ngspice Simulation
-    * Euler's Path and Stick Diagram
-    * Post-Layout extraction and Simulation
-    * CMOS Fabrication Process
+3. **Day-3** - Design library cell using Magic Layout and ngspice characterization
+    * Labs for CMOS inverter ngspice simulations
+    * Inception of Layout CMOS fabrication process
+    * Sky130 Tech File Labs
     * Lab Exercises
-4. **Day-4**
+4. **Day-4**- Pre-layout timing analysis and importance of good clock tree
     * Timing modelling using delay tables
-    * Clock Tree synthesis
-    * Timing analysis with real and ideal clocks
+    * Timing analysis with ideal clocks using openSTA
+    * Clock tree synthesis TritonCTS and signal integrity
+    * Timing analysis with real clocks using openSTA
     * Lab Exercises
-5. **Day-5**
-    * Routing
-    * DRC
-    * Parasitic extraction and the SPEF Format
+5. **Day-5**- Final steps for RTL2GDS using tritonRoute and openSTA
+    * Routing and design rule check (DRC)
+    * Power Distribution Network and routing
+    * TritonRoute Features
     * Lab Exercises
 <br/>
 
