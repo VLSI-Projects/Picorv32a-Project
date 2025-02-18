@@ -37,4 +37,7 @@ Digital VLSI SoC design and planning with a complete RTL to GDSII flow.The imple
     * TritonRoute Features
     * Lab Exercises
 <br/>
-![Image](https://github.com/user-attachments/assets/f5ce6294-3a8b-44fc-8f55-eca2d101df23)
+<p align="center">
+<img src="https://github.com/user-attachments/assets/f5ce6294-3a8b-44fc-8f55-eca2d101df23" 
+alt="alt text" width = 553 height = 358  >
+<p/>
