@@ -40,4 +40,33 @@ Digital VLSI SoC design and planning with a complete RTL to GDSII flow.The imple
           *  Routing and design rule check (DRC)
           *  Power Distribution Network and routing
           *  TritonRoute Features
-<br/>         
+<br/>   
+
+1. **Day-1**
+    * IC Design Components and Terminologies
+    * RISC-V
+    * Physical Design Flow and Open source EDA tools
+    * Lab Exercises 
+2. **Day-2**
+    * Floorplan
+    * Placement
+    * Cell Design Flow
+    * Lab Exercises 
+3. **Day-3**
+    * ngspice Simulation
+    * Euler's Path and Stick Diagram
+    * Post-Layout extraction and Simulation
+    * CMOS Fabrication Process
+    * Lab Exercises
+4. **Day-4**
+    * Timing modelling using delay tables
+    * Clock Tree synthesis
+    * Timing analysis with real and ideal clocks
+    * Lab Exercises
+5. **Day-5**
+    * Routing
+    * DRC
+    * Parasitic extraction and the SPEF Format
+    * Lab Exercises
+<br/>
+
