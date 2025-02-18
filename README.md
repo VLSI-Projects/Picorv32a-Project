@@ -5,8 +5,8 @@
 
 Digital VLSI SoC design and planning with a complete RTL to GDSII flow.The implementation uses open-source EDA tools like OpenLANE and Sky130 technology.The results of various stages of the VLSI design flow, such as synthesis, floorplanning, placement, clock tree synthesis, routing, and timing analysis are included.
 
-Day 1 - Inception of open-source EDA, OpenLANE and Sky130 PDK
-Day 2 - Good floorplan vs bad floorplan and introduction to library cells
-Day 3 - Design library cell using Magic Layout and ngspice characterization
-Day 4 - Pre-layout timing analysis and importance of good clock tree
-Day 5 - Final steps for RTL2GDS using tritonRoute and openSTA
+1. **Day-1**- Inception of open-source EDA, OpenLANE and Sky130 PDK
+2. **Day-2** - Good floorplan vs bad floorplan and introduction to library cells
+3. **Day-3** - Design library cell using Magic Layout and ngspice characterization
+4. **Day-4**- Pre-layout timing analysis and importance of good clock tree
+5. **Day-5**- Final steps for RTL2GDS using tritonRoute and openSTA
