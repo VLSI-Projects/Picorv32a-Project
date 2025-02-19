@@ -2,7 +2,7 @@
 The inside of an FPGA board here the block level diagram of an arduino board is visualized.
 FPGA Board : 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/8f60753c-4887-4189-a404-e1d93f2b5497" 
+<img src="https://github.com/user-attachments/assets/ab1bcdf6-311a-4047-8c65-83c5b1d61bc0" 
 alt="alt text" width = 553 height = 358  >
 <p/>
 
