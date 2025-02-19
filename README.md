@@ -50,9 +50,9 @@ alt="alt text" width = 553 height = 358  >
     
     * The binary code, made of ones and zeros, is processed by the hardware to perform the required task, such as adding two numbers.
     
-    * A key interface between the ISA and hardware is the Hardware Description Language (HDL), used to implement the architecture specifications.
+    * A key interface between the ISA and hardware is the, used to implement the architecture specifications.
     
-    * For example, in a system with a 32-core CPU, RTL (Register Transfer Level) is used to implement and translate the ISA specifications into a physical layout for execution.
+    * For example, in a system with a 32-core CPU, RTL is used to implement and translate the ISA specifications into a physical layout for execution.
     
 <p align="center">
 <img src="https://github.com/user-attachments/assets/b71ae209-68e2-4c59-82b1-4c6371d58551" 
