@@ -191,31 +191,71 @@ alt="alt text" width = 553 height = 358  >
 Commands to invoke the OpenLANE flow and perform synthesis
 
 ```bash
-# Change irectory to openlane flow directory
+# Change directory to openlane flow directory
 cd Desktop/work/tools/openlane_working_dir/openlane
 
-# alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
-# Since we have aliased the long command to 'docker' we can invoke the OpenLANE flow docker sub-system by just running this command
+# The 'docker' command  can invoke the OpenLANE flow docker sub-system by just running this command
 docker
 ```
 ```tcl
-# Now that we have entered the OpenLANE flow contained docker sub-system we can invoke the OpenLANE flow in the Interactive mode using the following command
+# OpenLANE flow contained docker  we can invoke the OpenLANE flow in the Interactive mode using the following command
 ./flow.tcl -interactive
 
-# Now that OpenLANE flow is open we have to input the required packages for proper functionality of the OpenLANE flow
+
+# Input the required packages for the OpenLANE flow
 package require openlane 0.9
 
 # Now the OpenLANE flow is ready to run any design and initially we have to prep the design creating some necessary files and directories for running a specific design which in our case is 'picorv32a'
 prep -design picorv32a
 
+
 # Now that the design is prepped and ready, we can run synthesis using following command
 run_synthesis
 
-# Exit from OpenLANE flow
-exit
 
-# Exit from OpenLANE flow docker sub-system
-exit
+# Now we can run floorplan
+run_floorplan
+
 ```
 
+
+####  Results
+<p align="center">
+<img src="https://github.com/user-attachments/assets/5ebc1036-7407-4d4e-b568-dabee91a7776" 
+alt="alt text" width = 553 height = 358  >
+<p/>
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/2c22056f-b2aa-4e65-a9d9-6d527b5e3cdb" 
+alt="alt text" width = 553 height = 358  >
+<p/>
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/66c41a48-dbde-4d35-9b50-957ad6e5fbaa" 
+alt="alt text" width = 553 height = 358  >
+<p/>
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/86aa9f8b-3350-4a36-932b-c73cb5c91f59" 
+alt="alt text" width = 553 height = 358  >
+<p/>
+
+
+#### 2. Calculate the flop ratio.
+
+The Flip-flop ratio is calculated from the synthesis statistics file 
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/868f08d5-1c19-4f14-aa2c-4e87814a58a5" 
+alt="alt text" width = 800 height = 500  >
+<p/>
+
+Calculation of Flop Ratio and DFF % from synthesis report file
+
+```math
+Flop\ Ratio = \frac{1613}{14876} = 0.108429685
+```
+```math
+Percentage\ of\ DFF's = 0.108429685 * 100 = 10.84296854\ \%
+```
 
