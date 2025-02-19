@@ -125,42 +125,42 @@ alt="alt text" width = 553 height = 358  >
 <p/>
 The OpenLANE ASIC Flow shown in the image consists of several steps in the digital design flow for ASIC implementation using the OpenROAD tool and the SKY130 PDK:
 
-1. Design RTL Input
+*  1. Design RTL Input
 
-The process starts with an RTL design (typically in Verilog or VHDL).
+          • The process starts with an RTL design (typically in Verilog or VHDL).
 
-2. Synthesis
+*  2. Synthesis
 
-• Uses Yosys + abc for RTL synthesis to generate a gate-level netlist.
-• STA (Static Timing Analysis) is performed using OpenSTA to check timing constraints.
-• DFT (Design for Testability) is incorporated for fault detection.
-• Floorplanning & Placement (Using OpenROAD)
+          • Uses Yosys + abc for RTL synthesis to generate a gate-level netlist.
+          • STA (Static Timing Analysis) is performed using OpenSTA to check timing constraints.
+          • DFT (Design for Testability) is incorporated for fault detection.
+          • Floorplanning & Placement (Using OpenROAD)
 
 3. Floorplanning: Defines block placement and chip area.
    
-• Placement: Arranges standard cells optimally.
-• Clock Tree Synthesis (CTS): Ensures balanced clock distribution.
-• Optimization: Improves power, timing, and area.
-• Global Routing: Creates an initial interconnect plan.
+          • Placement: Arranges standard cells optimally.
+          • Clock Tree Synthesis (CTS): Ensures balanced clock distribution.
+          • Optimization: Improves power, timing, and area.
+          • Global Routing: Creates an initial interconnect plan.
 
 4.Antenna Diode Insertion
-• A Fake Antenna Diode Insertion Script is run to protect transistors during fabrication.
+          • A Fake Antenna Diode Insertion Script is run to protect transistors during fabrication.
 
 5. Logic Equivalence Check (LEC)
-• Ensures synthesized netlist matches RTL logic using Yosys.
+          • Ensures synthesized netlist matches RTL logic using Yosys.
 
 6. Detailed Routing (TritonRoute)
 
-• Defines exact routing paths for interconnections.
-• A Fake Antenna Diode Swapping Script is used after routing.
+          • Defines exact routing paths for interconnections.
+          • A Fake Antenna Diode Swapping Script is used after routing.
 
 7. RC Extraction & Timing Analysis
-• RC Extraction: Extracts resistance and capacitance for accurate delay estimation.
-• STA (Static Timing Analysis) is repeated using OpenSTA.
+         • RC Extraction: Extracts resistance and capacitance for accurate delay estimation.
+         • STA (Static Timing Analysis) is repeated using OpenSTA.
 
 8. Physical Verification
-• Magic & Netgen are used for Design Rule Check (DRC) and Layout vs. Schematic (LVS) verification.
+         • Magic & Netgen are used for Design Rule Check (DRC) and Layout vs. Schematic (LVS) verification.
 
 9.GDSII Generation
-• The final gds2 Streaming step (using Magic) generates the GDSII file for fabrication.
+         • The final gds2 Streaming step (using Magic) generates the GDSII file for fabrication.
 
