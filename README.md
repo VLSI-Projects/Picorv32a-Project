@@ -45,10 +45,15 @@ alt="alt text" width = 553 height = 358  >
 
 ## RISC V Instruction Set Architecture ##
     * Instruction Set Architecture (ISA) is essentially the language that allows communication between a program and computer hardware.
+    
     * When a C program is executed, it is first compiled into assembly language, which is then translated into machine language (binary code) that the hardware understands.
+    
     * The binary code, made of ones and zeros, is processed by the hardware to perform the required task, such as adding two numbers.
+    
     * A key interface between the ISA and hardware is the Hardware Description Language (HDL), used to implement the architecture specifications.
+    
     * For example, in a system with a 32-core CPU, RTL (Register Transfer Level) is used to implement and translate the ISA specifications into a physical layout for execution.
+    
 <p align="center">
 <img src="https://github.com/user-attachments/assets/b71ae209-68e2-4c59-82b1-4c6371d58551" 
 alt="alt text" width = 553 height = 358  >
@@ -124,43 +129,52 @@ alt="alt text" width = 553 height = 358  >
 alt="alt text" width = 553 height = 358  >
 <p/>
 The OpenLANE ASIC Flow shown in the image consists of several steps in the digital design flow for ASIC implementation using the OpenROAD tool and the SKY130 PDK:
+Below is the OpenLANE ASIC flow formatted similarly to your reference:
 
-*  1. Design RTL Input
+---
 
-          • The process starts with an RTL design (typically in Verilog or VHDL).
+## Simplified RTL to GDS Flow for OpenLANE ##
 
-*  2. Synthesis
+* **RTL Design Input:**  
+  - Begin with your design written in an HDL (e.g., Verilog or VHDL). This description represents your circuit’s intended behavior.
 
-          • Uses Yosys + abc for RTL synthesis to generate a gate-level netlist.
-          • STA (Static Timing Analysis) is performed using OpenSTA to check timing constraints.
-          • DFT (Design for Testability) is incorporated for fault detection.
-          • Floorplanning & Placement (Using OpenROAD)
+* **Synthesis:**  
+  - Convert the RTL code into a gate-level netlist using tools like **Yosys + abc**.  
+  - This netlist represents the circuit using standard logic gates and serves as the basis for physical implementation.  
+  - **Static Timing Analysis (STA)** using **OpenSTA** is performed to ensure timing constraints are met.
 
-3. Floorplanning: Defines block placement and chip area.
-   
-          • Placement: Arranges standard cells optimally.
-          • Clock Tree Synthesis (CTS): Ensures balanced clock distribution.
-          • Optimization: Improves power, timing, and area.
-          • Global Routing: Creates an initial interconnect plan.
+* **Floorplanning and Placement:**  
+  - **Floorplanning:**  
+    - Define the chip's die area and plan the overall layout by allocating regions for different functional blocks, I/O pads, and power domains.
+  - **Placement:**  
+    - Position the synthesized standard cells on the chip.  
+    - This step is often divided into two phases:  
+      * **Global Placement:** Provides an initial rough placement of cells to optimize overall area and connectivity.  
+      * **Detailed Placement:** Refines the placement to comply with physical design rules and improve timing.
+  - **Clock Tree Synthesis (CTS):**  
+    - Construct a clock distribution network that minimizes clock skew across sequential elements by inserting buffers and carefully routing the clock signals.
 
-4.Antenna Diode Insertion
-          • A Fake Antenna Diode Insertion Script is run to protect transistors during fabrication.
+* **Routing:**  
+  - **Global Routing:**  
+    - Establish approximate wiring paths between cells based on the placement, ensuring connectivity.
+  - **Detailed Routing:**  
+    - Generate exact routing paths for each connection according to the available metal layers and design rules.
+  - **Antenna Diode Insertion and Swapping:**  
+    - Run scripts (often “fake” ones during flow verification) to insert and adjust diode connections to protect transistors during fabrication.
 
-5. Logic Equivalence Check (LEC)
-          • Ensures synthesized netlist matches RTL logic using Yosys.
+* **Verification and Sign-off Checks:**  
+  - **Logic Equivalence Check (LEC):**  
+    - Ensure that the synthesized gate-level netlist is functionally equivalent to the original RTL design.
+  - **RC Extraction & Timing Analysis:**  
+    - Extract parasitic resistances and capacitances to refine timing analysis using **OpenSTA**.
+  - **Design Rule Checking (DRC) and Layout vs. Schematic (LVS):**  
+    - Verify that the layout complies with the PDK’s design rules using tools like **Magic & Netgen**.
+    - Confirm that the final physical layout matches the gate-level netlist.
 
-6. Detailed Routing (TritonRoute)
+* **GDSII Generation:**  
+  - Finalize the design by generating the GDSII file, which is the standard format for chip fabrication.
 
-          • Defines exact routing paths for interconnections.
-          • A Fake Antenna Diode Swapping Script is used after routing.
+---
 
-7. RC Extraction & Timing Analysis
-         • RC Extraction: Extracts resistance and capacitance for accurate delay estimation.
-         • STA (Static Timing Analysis) is repeated using OpenSTA.
-
-8. Physical Verification
-         • Magic & Netgen are used for Design Rule Check (DRC) and Layout vs. Schematic (LVS) verification.
-
-9.GDSII Generation
-         • The final gds2 Streaming step (using Magic) generates the GDSII file for fabrication.
+This structured flow encapsulates the OpenLANE process from RTL input to the final GDSII output, ensuring a fully verified ASIC design ready for manufacturing.
 
