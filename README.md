@@ -15,7 +15,7 @@ alt="alt text" width = 553 height = 358  >
 # IC Design Components and Terminologies
 **IC** or **Integrated circuit** is basically an electronic circuit consisting of large number of transistors, resistors and capacitors etc inside a single semiconductor chip. They come in a variety of packages and sizes. Some of the commonly used ICs include Timer 555 ic, 741 operational amplifiers, 78xx series of voltage regulators and 74xx series of logic gates.<br/>
 **SOC - System on Chip** is also a type of IC which has the capabilities of a computer built inside the chip. It typically consists of a CPU, memory , input and output ports, analog IPs and other units integrated within itself.SoCs can be applied to any computing task. They are typically used in mobile computing such as tablets, smartphones, smartwatches and netbooks as well as embedded systems.<br/>
-
+<p align="center">
 <img src="https://github.com/user-attachments/assets/56a566c8-0ac2-47d0-a9df-e67ba9ee9deb" 
 alt="alt text" width = 553 height = 358  >
 <p/>
@@ -114,9 +114,53 @@ Process Design Rules: DRC, LVS, PEX
 
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/0a425841-fc32-4c56-aec4-9ba206b257f8" 
+<img src="https://github.com/user-attachments/assets/dc0006e9-3a01-430a-83f4-59e55669a88a" 
 alt="alt text" width = 553 height = 358  >
 <p/>
 
+## OpenLANE ##
+<p align="center">
+<img src="https://github.com/user-attachments/assets/f51a48f3-18ea-482a-94d9-536721a57939" 
+alt="alt text" width = 553 height = 358  >
+<p/>
+The OpenLANE ASIC Flow shown in the image consists of several steps in the digital design flow for ASIC implementation using the OpenROAD tool and the SKY130 PDK:
 
+1. Design RTL Input
+
+The process starts with an RTL design (typically in Verilog or VHDL).
+
+2. Synthesis
+
+• Uses Yosys + abc for RTL synthesis to generate a gate-level netlist.
+• STA (Static Timing Analysis) is performed using OpenSTA to check timing constraints.
+• DFT (Design for Testability) is incorporated for fault detection.
+• Floorplanning & Placement (Using OpenROAD)
+
+3. Floorplanning: Defines block placement and chip area.
+   
+• Placement: Arranges standard cells optimally.
+• Clock Tree Synthesis (CTS): Ensures balanced clock distribution.
+• Optimization: Improves power, timing, and area.
+• Global Routing: Creates an initial interconnect plan.
+
+4.Antenna Diode Insertion
+• A Fake Antenna Diode Insertion Script is run to protect transistors during fabrication.
+
+5. Logic Equivalence Check (LEC)
+• Ensures synthesized netlist matches RTL logic using Yosys.
+
+6. Detailed Routing (TritonRoute)
+
+• Defines exact routing paths for interconnections.
+• A Fake Antenna Diode Swapping Script is used after routing.
+
+7. RC Extraction & Timing Analysis
+• RC Extraction: Extracts resistance and capacitance for accurate delay estimation.
+• STA (Static Timing Analysis) is repeated using OpenSTA.
+
+8. Physical Verification
+• Magic & Netgen are used for Design Rule Check (DRC) and Layout vs. Schematic (LVS) verification.
+
+9.GDSII Generation
+• The final gds2 Streaming step (using Magic) generates the GDSII file for fabrication.
 
