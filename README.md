@@ -124,10 +124,7 @@ alt="alt text" width = 553 height = 358  >
 <p/>
 
 ## OpenLANE ##
-<p align="center">
-<img src="https://github.com/user-attachments/assets/f51a48f3-18ea-482a-94d9-536721a57939" 
-alt="alt text" width = 553 height = 358  >
-<p/>
+
 The OpenLANE ASIC Flow shown in the image consists of several steps in the digital design flow for ASIC implementation using the OpenROAD tool and the SKY130 PDK:
 Below is the OpenLANE ASIC flow formatted similarly to your reference:
 
@@ -175,6 +172,9 @@ Below is the OpenLANE ASIC flow formatted similarly to your reference:
   - Finalize the design by generating the GDSII file, which is the standard format for chip fabrication.
 
 ---
-
+<p align="center">
+<img src="https://github.com/user-attachments/assets/f51a48f3-18ea-482a-94d9-536721a57939" 
+alt="alt text" width = 553 height = 358  >
+<p/>
 This structured flow encapsulates the OpenLANE process from RTL input to the final GDSII output, ensuring a fully verified ASIC design ready for manufacturing.
 
