@@ -89,8 +89,34 @@ Process Design Rules: DRC, LVS, PEX
 
 • I/O Libraries
 
+## Simplified RTL to GDS flow ##
+* **Synthesis:** This stage converts the HDL code (e.g., Verilog) into a gate-level netlist. The netlist represents the circuit's functionality using basic logic gates.
+  
+* **Floor and Power Planning:** In this stage, the chip layout is planned. The die area is divided into sections for different functional blocks and I/O pads. The power supply network is also designed to ensure proper power distribution throughout the chip.
+ 
+* **Placement:** This stage involves positioning the logic cells from the netlist onto the chip layout. The goal is to find optimal locations for the cells considering factors like timing and area constraints. There are two main placement steps:
+
+    * **Global placement:** This provides an initial placement for all cells, aiming for optimal positions but not necessarily following all layout rules. The placement in this step may not always be legal.
+    * **Detailed placement:** This refines the initial placement to ensure all cells adhere to the design rules.
+
+* **Clock Tree Synthesis (CTS):** A clock tree is a network of buffers and wires that distributes the clock signal to all sequential elements (flip-flops) in the design. CTS aims to minimize clock skew, which is the variation in arrival time of the clock signal at different flip-flops.
+
+* **Routing:** This stage involves creating connections between the placed cells using metal layers available in the fabrication process. Routing is typically done in two steps:
+
+    * **Global routing:** This defines the general paths for the connections between cells.
+    * **Detailed routing:** This implements the actual wiring connections based on the global routing plan.
+
+* **Sign-off:** This stage involves various checks to ensure the design meets the desired functionality and manufacturing requirements. Here are some common sign-off checks:
+
+    * **Design Rule Checking (DRC):** This verifies if the layout adheres to the design rules specified by the PDK for the fabrication process.
+    * **Layout vs Schematic (LVS):** This compares the final layout with the original gate-level netlist to ensure they are equivalent.
+    * **Static Timing Analysis (STA):** This analyzes the timing delays in the design to ensure all signals meet the timing constraints and the circuit operates at the required frequency.
 
 
+<p align="center">
+<img src="https://github.com/user-attachments/assets/0a425841-fc32-4c56-aec4-9ba206b257f8" 
+alt="alt text" width = 553 height = 358  >
+<p/>
 
 
 
