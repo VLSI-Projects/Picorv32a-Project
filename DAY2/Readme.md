@@ -310,14 +310,14 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
 Screenshots of floorplan def in magic
 
-![Screenshot from 2024-03-17 22-58-44](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/e703ef0b-3968-4132-a9c7-05b53f50b214)
+![image](https://github.com/user-attachments/assets/f257b8ad-e55c-4b2a-90bd-10b00819ca8d)
+
 
 Standard cells legally placed 
 
-![Screenshot from 2024-03-17 23-04-20](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/54911138-f942-48b9-b4e9-61d741a4b5ac)
+![image](https://github.com/user-attachments/assets/7b980d45-bc95-432f-864d-a872acd63e7b)
 
 
-```
 
 
 ## <h2 id="header-2_2">Library building and Placement</h2>
