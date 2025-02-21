@@ -10,6 +10,7 @@ So the advantage of this blocking period is that we can save lot of power in clo
 ![image](https://github.com/user-attachments/assets/81752cee-6f9f-44b8-b976-325945c1e925)
 
 Let's say we have a clock tree, The buffer present at the first input is driving the load of second two buffers. We have splited the buffer and in clock gating technique we have just swaped the buffer with and gate so now will all the other characteristic will be same or will get changed will see in coming steps.
+
 ![image](https://github.com/user-attachments/assets/4110bbd6-cb54-410b-98c6-bbcf51bb6fcc)
 
 
