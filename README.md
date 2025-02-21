@@ -53,4 +53,4 @@ The digital VLSI SoC design and planning icludes a complete RTL to GDSII flow.Th
 
 # Acknowledgements
 
-* [Kunal Ghosh](https://github.com/kunalg123), Co-founder, VSD Corp. Pvt. Ltd.
+* Kunal Ghosh, Co-founder, VSD Corp. Pvt. Ltd.
