@@ -226,7 +226,143 @@ Slack= Data ariival time - data required time. Slck either should be positive or
 
 
 Let's identify the timing paths from design, with single clock 
+
 ![image](https://github.com/user-attachments/assets/3a48e049-1ac0-4a29-9387-40bf6d6cf85b)
 
+# LABS
+1. Fix up small DRC errors and verify the design is ready to be inserted into our flow.
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+
+magic -T sky130A.tech sky130_inv.mag &
+```
+Conditions to be verified before moving forward with custom designed cell layout:
+
+Condition 1: The input and output ports of the standard cell should lie on the intersection of the vertical and horizontal tracks.
+Condition 2: Width of the standard cell should be odd multiples of the horizontal track pitch.
+Condition 3: Height of the standard cell should be even multiples of the vertical track pitch.
+
+```bash
+# To understand the syntax
+help grid
+```
+```bash
+# Setting grid values
+grid 0.46um 0.34um 0.23um 0.17um
+```
+Grid
+
+![Screenshot from 2025-02-20 20-46-16](https://github.com/user-attachments/assets/a44886f7-8faa-478a-b993-d8b35cbb6173)
+
+
+
+```math
+Horizontal\ track\ pitch = 0.46\ um
+```
+```math
+Width\ of\ standard\ cell = 1.38\ um = 0.46 * 3
+```
+```math
+Vertical\ track\ pitch = 0.34\ um
+```
+```math
+Height\ of\ standard\ cell = 2.72\ um = 0.34 * 8
+```
+```bash
+save sky130_vsdinv.mag
+```
+Open the newly saved layout using
+```bash
+magic -T sky130A.tech sky130_vsdinv.mag &
+```
+
+![Screenshot from 2025-02-20 20-50-26](https://github.com/user-attachments/assets/2a9ef929-28b1-4fa5-837c-d33e4ffc4237)
+
+2. Generate lef from the layout.
+
+![Screenshot from 2025-02-20 20-51-25](https://github.com/user-attachments/assets/e32d7666-f549-4d07-9ef8-0c10ba674988)
+
+```bash
+lef write
+```
+3. Copy lef and lib files to /Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```bash
+cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+```bash
+ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+```bash
+cp libs/sky130_fd_sc_hd__* ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+```bash
+ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+![Screenshot from 2025-02-20 20-52-55](https://github.com/user-attachments/assets/3f766eee-fbba-4df1-a848-ffaab8fd874a)
+
+
+Open picorv32A/config.tcl with GVIM
+
+
+Edit config.tcl to this 
+
+![image](https://github.com/user-attachments/assets/d4b70c89-4bae-4bbc-bd49-6037279e24a8)
+
+
+Now perform steps to open OPENLane and prep picorv32a.
+
+Include newly added lef to flow using
+```bash
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+```
+Run synthesis
+
+![Screenshot from 2025-02-20 21-05-21](https://github.com/user-attachments/assets/4e4719e7-4da3-49ab-a35e-3ee122e2447c)
+
+Perform these modifications
+```bash
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+echo $::env(SYNTH_STRATEGY)
+set $::env(SYNTH_STRATEGY) "DELAY3"
+echo $::env(SYNTH_BUFFERING)
+echo $::env(SYNTH_SIZING)
+set $::env(SYNTH_SIZING)1
+echo $::env(SYNTH_DRIVING_CELL)
+run_synthesis
+
+```
+
+
+Run synthesis
+
+Negative slack becomes 0
+
+![image](https://github.com/user-attachments/assets/2ea9d87c-7f73-407a-8e0c-3dbdd4e30ae0)
+
+```bash
+run_floorplan
+```
+
+![Screenshot from 2025-02-20 21-09-01](https://github.com/user-attachments/assets/16a2babe-6a22-4c7a-90dc-4b675513106f)
+
+
+Next we run placement
+
+
+Open placements results using
+```bash
+cd /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/21-01_15-14/results/placement/
+
+# Command to load the placement def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+![Screenshot from 2025-02-20 21-13-09](https://github.com/user-attachments/assets/8c2999e8-03b6-463d-ba16-573b2c753e45)
+
+
+Expand to view internal activity of layers
+
+![Screenshot from 2025-02-20 21-13-24](https://github.com/user-attachments/assets/0b137b11-24ee-4c96-ba11-47afb8567abe)
 
 
