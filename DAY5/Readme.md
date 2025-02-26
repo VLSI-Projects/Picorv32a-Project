@@ -222,61 +222,80 @@ cd Desktop/work/tools/SPEF_EXTRACTOR
 ```bash
 # Extract the spef
 python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/21-01_15-14/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/21-01_15-14/results/routing/picorv32a.def
+
+
+
+
+
+
+
+
+
+#### 3. Post-Route parasitic extraction using SPEF extractor.
+
+Commands for SPEF extraction using external tool
+
+```bash
+# Change directory
+cd Desktop/work/tools/SPEF_EXTRACTOR
+
+# Command extract spef
+python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/results/routing/picorv32a.def
 ```
 
-4) Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
+#### 4. Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
 
 Commands to be run in OpenLANE flow to do OpenROAD timing analysis with integrated OpenSTA in OpenROAD
 
 ```tcl
 # Command to run OpenROAD tool
 openroad
-```
-Read the .lef file we have created.
-```bash
-read_lef /openLANE_flow/designs/picorv32a/runs/21-01_15-14/tmp/merged.lef
-```
-![image](https://github.com/user-attachments/assets/3f0a8003-2e65-47dc-a77e-588ee7be1640)
 
-read the .def file we have created.
-```bash
-read_def /openLANE_flow/designs/picorv32a/runs/21-02-2025/results/routing/picorv32a.def
-```
+# Reading lef file
+read_lef /openLANE_flow/designs/picorv32a/runs/26-03_08-45/tmp/merged.lef
 
-```bash
+# Reading def file
+read_def /openLANE_flow/designs/picorv32a/runs/26-03_08-45/results/routing/picorv32a.def
+
+# Creating an OpenROAD database to work with
 write_db pico_route.db
-```
-```bash
+
+# Loading the created database in OpenROAD
 read_db pico_route.db
-```
-Read the verilog file created in the synthesis step.
-```bash
-read_verilog /openLANE_flow/designs/picorv32a/runs/21-01_15-14/results/synthesis/picorv32a.synthesis_preroute.v
-```
-```bash
+
+# Read netlist post CTS
+read_verilog /openLANE_flow/designs/picorv32a/runs/26-03_08-45/results/synthesis/picorv32a.synthesis_preroute.v
+
+# Read library for design
 read_liberty $::env(LIB_SYNTH_COMPLETE)
-```
-```bash
+
+# Link design and library
 link_design picorv32a
-```
 
-
-```bash
+# Read in the custom sdc we created
 read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
-```
 
-
-```bash
+# Setting all cloks as propagated clocks
 set_propagated_clock [all_clocks]
-```
-Read the spef file we just extracted(not nescessary in new openlane)
-```bash
-read_spef /openLANE_flow/designs/picorv32a/runs/21-01_15-14/results/routing/picorv32a.spef
+
+# Read SPEF
+read_spef /openLANE_flow/designs/picorv32a/runs/26-03_08-45/results/routing/picorv32a.spef
+
+# Generating custom timing report
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+
+# Exit to OpenLANE flow
+exit
 ```
 
-```bash
-report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
-```
+Screenshots of commands run and timing report generated
+
+![Screenshot from 2024-03-26 23-16-16](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/72ef3e8d-7ca2-4b60-89ea-de053f9c2902)
+![Screenshot from 2024-03-26 23-17-09](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/5cac9ce5-420a-4eaa-b5f4-09286701e550)
+![Screenshot from 2024-03-26 23-17-32](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/7d809f14-66b6-4dd6-8161-2ad8371cfaf9)
+![Screenshot from 2024-03-26 23-17-56](https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd/assets/63997454/64ccb1d8-74aa-42b0-88d4-a0f9588d2ca2)
+
+
 
 
 # The final layout
