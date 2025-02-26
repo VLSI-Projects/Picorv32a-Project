@@ -18,29 +18,29 @@ The digital VLSI SoC design and planning icludes a complete RTL to GDSII flow.Th
 # Table of Contents
 
 
-1. **Day-1**-Inception of open-source EDA, OpenLANE and Sky130 PDK
+1. **Section-1**-Inception of open-source EDA, OpenLANE and Sky130 PDK
     * How to talk to computers
     * SoC design and OpenLANE
     * Get familiar to open-source EDA tools
     * Lab Exercises 
-2. **Day-2**- Good floorplan vs bad floorplan and introduction to library cells
+2. **Section-2**- Good floorplan vs bad floorplan and introduction to library cells
     * Chip Floor planning considerations
     * Library Binding and Placement
     * Cell design and characterization flows
     * General timing characterization parameters
     * Lab Exercises 
-3. **Day-3** - Design library cell using Magic Layout and ngspice characterization
+3. **Section-3** - Design library cell using Magic Layout and ngspice characterization
     * Labs for CMOS inverter ngspice simulations
     * Inception of Layout CMOS fabrication process
     * Sky130 Tech File Labs
     * Lab Exercises
-4. **Day-4**- Pre-layout timing analysis and importance of good clock tree
+4. **Section-4**- Pre-layout timing analysis and importance of good clock tree
     * Timing modelling using delay tables
     * Timing analysis with ideal clocks using openSTA
     * Clock tree synthesis TritonCTS and signal integrity
     * Timing analysis with real clocks using openSTA
     * Lab Exercises
-5. **Day-5**- Final steps for RTL2GDS using tritonRoute and openSTA
+5. **Section-5**- Final steps for RTL2GDS using tritonRoute and openSTA
     * Routing and design rule check (DRC)
     * Power Distribution Network and routing
     * TritonRoute Features
